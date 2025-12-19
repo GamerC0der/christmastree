@@ -9,7 +9,13 @@ const ornamentCategories = {
         "ornaments/classic/adobe.svg",
         "ornaments/classic/hackers_assemble.png",
         "ornaments/classic/macintosh.svg",
-        "ornaments/classic/hack_strikes_back.svg"
+        "ornaments/classic/hack_strikes_back.svg",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/84d21d014bf6cee90ce53f8f35698b64612f0a3e_Jetlag.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/b6707300b42b2c5cb0d44e8b6f4c5066d6fefa6b_Airlines.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/9f49fb15a86c7fd57e3f58bf885650e5b0efcadf_Friends.svg",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/57a5e0616e3da740b4ef9594ffd9f97b098969f0_Orphmoji_Peefest.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/6828f0051622f9d8ad1d0eb182b2c33ef324fe68_Hack_In_The_Club.svg",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/3a55bb53f26e58c92fd14af70ab90eab5fe43ed8_Jurassic_Hack.png"
     ],
     "sticky-holidays": [
         "ornaments/sticky-holidays/ornament1.png",
@@ -17,7 +23,8 @@ const ornamentCategories = {
         "ornaments/sticky-holidays/ornament3.png",
         "ornaments/sticky-holidays/ornament4.png",
         "ornaments/sticky-holidays/ornament5.png",
-        "ornaments/sticky-holidays/ornament6.png"
+        "ornaments/sticky-holidays/ornament6.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/4c53c2888a662bc4_image-removebg-preview__13_.png"
     ],
     siege: [
         "ornaments/siege/framework_v2.png",
@@ -28,7 +35,17 @@ const ornamentCategories = {
     other: [
         "ornaments/other/img_1135.png",
         "ornaments/other/orpheus-hollow-knight.png",
-        "ornaments/other/tootsie_roll.png"
+        "ornaments/other/tootsie_roll.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/6d115d0c51dc911e294b0c0c7294a5036fef3531_Epoch_Among_Us.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/0680ab24134561362b3dfaacb2c53caeaba21b7c_Undertale.svg",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/dda44f08c2f529dc432b51c3a4e99c5c59607f08_Orpheus_Goes_To_FIRST_Robotics.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/53ec1cb30fdf0dc1_love_gaming.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/1271409861dcd5d4_25pc_sticker_8.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/bf920cb34b899762d6767749d1000c0207caeb55_Stranger_Hacks.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/a95f11d40fe3bb46_65pc_sticker_2.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/f982c025a94f9aca56c53af498e2d31df44b4036_Sticky_Holidays_-_Completion.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/3eef048f97e84f3384ff2368dc51846884279474_2025_Summer_of_Making.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/6738cbc8f0007511_25pc_sticker_2.png"
     ]
 };
 
