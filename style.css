@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body{
+  font-family: 'Inter', sans-serif;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+#header, #footer{
+  text-align: center;
+}
+
+#tree-container{
+  max-width: 20rem;
+  display: flex;
+  margin: auto auto;
+}
+
+#star{
+  display: inline-block;
+  position: relative;
+  margin: 0 -13rem;
+  font-size: 5rem;
+  z-index: 5;
+
+}
+
+#tree{
+  width: 20rem;
+  display: inline;
+  margin: 4rem 0 0 0;
+  z-index: 0;
+}
+
+#decorations{
+  display: inline-block;
+}
+
+.ornament{
+  height: 2rem;
+  position: relative;
+  display: inline-block;
+  margin-top: 10rem;
+  margin-left: 10rem;
+  z-index: 10;
+}
+
+.important-text{
+  color:#5bc0de;
+}
