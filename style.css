@@ -30,6 +30,8 @@ body{
   display: inline;
   margin: 4rem 0 0 0;
   z-index: 0;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 #decorations{
@@ -37,14 +39,118 @@ body{
 }
 
 .ornament{
+  width: 2rem;
   height: 2rem;
-  position: relative;
-  display: inline-block;
-  margin-top: 10rem;
-  margin-left: 10rem;
+  position: absolute;
   z-index: 10;
+  cursor: grab;
+  -webkit-user-drag: none;
+  user-select: none;
+  object-fit: contain;
+}
+
+.ornament:active {
+  cursor: grabbing;
 }
 
 .important-text{
   color:#5bc0de;
+}
+
+#ornament-selector {
+  margin: 2rem auto;
+  max-width: 20rem;
+  text-align: center;
+}
+
+#tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.tab-button {
+  background-color: #333;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s;
+}
+
+.tab-button:hover {
+  background-color: #555;
+}
+
+.tab-button.active {
+  background-color: #5bc0de;
+  color: #1a1a1a;
+}
+
+#ornament-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.ornament-option {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 0.25rem;
+  transition: border-color 0.3s;
+  background-color: #333;
+  padding: 0.25rem;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.ornament-option:hover {
+  border-color: #5bc0de;
+}
+
+.ornament .interact-resize-handle {
+  width: 8px;
+  height: 8px;
+  background: #5bc0de;
+  border: 1px solid #333;
+  position: absolute;
+}
+
+.ornament .interact-resize-handle-tl,
+.ornament .interact-resize-handle-tr,
+.ornament .interact-resize-handle-bl,
+.ornament .interact-resize-handle-br {
+  border-radius: 50%;
+}
+
+.ornament .interact-resize-handle-tl {
+  top: -4px;
+  left: -4px;
+  cursor: nw-resize;
+}
+
+.ornament .interact-resize-handle-tr {
+  top: -4px;
+  right: -4px;
+  cursor: ne-resize;
+}
+
+.ornament .interact-resize-handle-bl {
+  bottom: -4px;
+  left: -4px;
+  cursor: sw-resize;
+}
+
+.ornament .interact-resize-handle-br {
+  bottom: -4px;
+  right: -4px;
+  cursor: se-resize;
 }

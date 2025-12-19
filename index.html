@@ -3,9 +3,10 @@
 <head>  
     <meta charset="UTF-8">  
     <title>Haxmas Decorate-a-tree!</title>  
-    <link rel="stylesheet" href="style.css">  
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.17/dist/interact.min.js"></script>
 
-</head>  
+</head>
 <body>  
     <div id="header">
         <h1 class="important-text">Decorate-a-tree!</h1>
@@ -16,6 +17,16 @@
 		        <div id="decorations">
 			    </div>
 	        </div>
+        <div id="ornament-selector">
+            <div id="tabs">
+                <button class="tab-button active" data-category="classic">Classic</button>
+                <button class="tab-button" data-category="sticky-holidays">Sticky Holidays</button>
+                <button class="tab-button" data-category="siege">Siege</button>
+                <button class="tab-button" data-category="other">Other</button>
+            </div>
+            <div id="ornament-gallery">
+            </div>
+        </div>
         <div id="footer">
         <h3 class="important-text">made by matthew </h3>
     </div>
