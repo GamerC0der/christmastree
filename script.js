@@ -1,5 +1,3 @@
-const stars = ["⭐", "💫", "💖", "🎄", "🏴‍☠️", "👾"];
-
 const ornamentCategories = {
     classic: [
         "ornaments/classic/orpheus_skateboarding.png",
@@ -45,16 +43,10 @@ const ornamentCategories = {
         "https://hc-cdn.hel1.your-objectstorage.com/s/v3/a95f11d40fe3bb46_65pc_sticker_2.png",
         "https://hc-cdn.hel1.your-objectstorage.com/s/v3/f982c025a94f9aca56c53af498e2d31df44b4036_Sticky_Holidays_-_Completion.png",
         "https://hc-cdn.hel1.your-objectstorage.com/s/v3/3eef048f97e84f3384ff2368dc51846884279474_2025_Summer_of_Making.png",
-        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/6738cbc8f0007511_25pc_sticker_2.png"
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/6738cbc8f0007511_25pc_sticker_2.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/c8a9b423f92e7c76_image-removebg-preview__28_-removebg-preview.png"
     ]
 };
-
-let ornamentCounter = 0;
-
-function changeStar(){
-    let randomIndex = Math.floor(Math.random() * 6 );
-    document.getElementById("star").innerText = stars[randomIndex];
-}
 
 function loadOrnaments(category) {
     const gallery = document.getElementById("ornament-gallery");
@@ -64,77 +56,8 @@ function loadOrnaments(category) {
         const ornamentOption = document.createElement("img");
         ornamentOption.src = ornamentSrc;
         ornamentOption.className = "ornament-option";
-        ornamentOption.addEventListener("click", () => addOrnamentToTree(ornamentSrc));
         gallery.appendChild(ornamentOption);
     });
-}
-
-function addOrnamentToTree(ornamentSrc) {
-    const decorations = document.getElementById("decorations");
-
-    const randomTop = Math.random() * 300 + 40;
-    const randomLeft = Math.random() * 200 + 40;
-
-    const ornament = document.createElement("img");
-    ornament.src = ornamentSrc;
-    ornament.className = "ornament";
-    ornament.id = `ornament${ornamentCounter++}`;
-    ornament.style.transform = `translate(${randomLeft}px, ${randomTop}px)`;
-    ornament.setAttribute('data-x', randomLeft);
-    ornament.setAttribute('data-y', randomTop);
-
-    decorations.appendChild(ornament);
-
-    initializeInteract(ornament);
-}
-
-function initializeInteract(element) {
-    interact(element)
-        .draggable({
-            listeners: {
-                start(event) {
-                    event.target.style.zIndex = "20";
-                },
-                move(event) {
-                    const target = event.target;
-                    const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-                    const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-                    target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-                    target.setAttribute('data-x', x);
-                    target.setAttribute('data-y', y);
-                },
-                end(event) {
-                    event.target.style.zIndex = "10";
-                }
-            },
-        })
-        .resizable({
-            edges: { left: true, right: true, bottom: true, top: true },
-            listeners: {
-                move(event) {
-                    const target = event.target;
-                    let x = (parseFloat(target.getAttribute('data-x')) || 0);
-                    let y = (parseFloat(target.getAttribute('data-y')) || 0);
-
-                    target.style.width = event.rect.width + 'px';
-                    target.style.height = event.rect.height + 'px';
-
-                    x += event.deltaRect.left;
-                    y += event.deltaRect.top;
-
-                    target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-
-                    target.setAttribute('data-x', x);
-                    target.setAttribute('data-y', y);
-                }
-            },
-            modifiers: [
-                interact.modifiers.restrictSize({
-                    min: { width: 20, height: 20 }
-                })
-            ]
-        });
 }
 
 function switchTab(category) {
@@ -147,8 +70,6 @@ function switchTab(category) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const star = document.getElementById("star");
-
     switchTab("classic");
 
     document.querySelectorAll(".tab-button").forEach(button => {
@@ -158,9 +79,154 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    star.addEventListener('click', changeStar);
+    interact('.ornament-option')
+        .draggable({
+            inertia: true,
+            autoScroll: true,
+            listeners: {
+                start(event) {
+                    const original = event.target;
+                    const clone = original.cloneNode(true);
+                    clone.className = 'ornament';
+                    clone.style.position = 'absolute';
 
-    document.querySelectorAll('.ornament').forEach(ornament => {
-        initializeInteract(ornament);
+                    const naturalWidth = original.naturalWidth || 60;
+                    const naturalHeight = original.naturalHeight || 60;
+                    const aspectRatio = naturalWidth / naturalHeight;
+
+                    let width, height;
+                    const maxSize = 80;
+                    const minSize = 40;
+
+                    if (naturalWidth > naturalHeight) {
+                        width = Math.min(Math.max(naturalWidth * 0.15, minSize), maxSize);
+                        height = width / aspectRatio;
+                    } else {
+                        height = Math.min(Math.max(naturalHeight * 0.15, minSize), maxSize);
+                        width = height * aspectRatio;
+                    }
+
+                    clone.style.width = width + 'px';
+                    clone.style.height = height + 'px';
+                    clone.style.left = (event.clientX - width/2) + 'px';
+                    clone.style.top = (event.clientY - height/2) + 'px';
+                    clone.style.zIndex = '1000';
+                    clone.style.pointerEvents = 'none';
+                    document.body.appendChild(clone);
+
+                    event.target.dragClone = clone;
+                },
+                move(event) {
+                    const clone = event.target.dragClone;
+                    if (clone) {
+                        const x = (parseFloat(clone.style.left) || 0) + event.dx;
+                        const y = (parseFloat(clone.style.top) || 0) + event.dy;
+                        clone.style.left = x + 'px';
+                        clone.style.top = y + 'px';
+
+                        snapToTree(clone, x, y);
+                    }
+                },
+                end(event) {
+                    const clone = event.target.dragClone;
+                    if (clone) {
+                        clone.style.pointerEvents = 'auto';
+
+                        addResizeHandles(clone);
+
+                        makeResizable(clone);
+
+                        delete event.target.dragClone;
+                    }
+                }
+            }
+        });
+});
+
+function snapToTree(ornament, x, y) {
+    const tree = document.getElementById('tree-image');
+    const treeRect = tree.getBoundingClientRect();
+
+    const ornamentWidth = ornament.offsetWidth;
+    const ornamentHeight = ornament.offsetHeight;
+    const ornamentCenterX = x + ornamentWidth / 2;
+    const ornamentCenterY = y + ornamentHeight / 2;
+
+    const treeCenterX = treeRect.left + treeRect.width / 2;
+    const treeCenterY = treeRect.top + treeRect.height / 2;
+
+    const ornamentLeft = x;
+    const ornamentRight = x + ornamentWidth;
+    const ornamentTop = y;
+    const ornamentBottom = y + ornamentHeight;
+
+    const isOnTree =
+        ornamentRight > treeRect.left &&
+        ornamentLeft < treeRect.right &&
+        ornamentBottom > treeRect.top &&
+        ornamentTop < treeRect.bottom;
+
+    if (isOnTree) {
+        ornament.classList.add('snapped');
+    } else {
+        ornament.classList.remove('snapped');
+    }
+}
+
+function addResizeHandles(ornament) {
+    const handles = ['tl', 'tr', 'bl', 'br'];
+    handles.forEach(handle => {
+        const resizeHandle = document.createElement('div');
+        resizeHandle.className = `interact-resize-handle interact-resize-handle-${handle}`;
+        ornament.appendChild(resizeHandle);
     });
-})
+}
+
+function makeResizable(ornament) {
+    interact(ornament)
+        .resizable({
+            edges: {
+                top: '.interact-resize-handle-tl, .interact-resize-handle-tr',
+                left: '.interact-resize-handle-tl, .interact-resize-handle-bl',
+                bottom: '.interact-resize-handle-bl, .interact-resize-handle-br',
+                right: '.interact-resize-handle-tr, .interact-resize-handle-br'
+            },
+            listeners: {
+                move(event) {
+                    const target = event.target;
+
+                    target.style.width = event.rect.width + 'px';
+                    target.style.height = event.rect.height + 'px';
+
+                    if (event.deltaRect.left !== 0 || event.deltaRect.top !== 0) {
+                        const currentLeft = parseFloat(target.style.left) || 0;
+                        const currentTop = parseFloat(target.style.top) || 0;
+                        target.style.left = (currentLeft + event.deltaRect.left) + 'px';
+                        target.style.top = (currentTop + event.deltaRect.top) + 'px';
+                    }
+                }
+            },
+            modifiers: [
+                interact.modifiers.restrictSize({
+                    min: { width: 30, height: 30 },
+                    max: { width: 150, height: 150 }
+                })
+            ],
+            inertia: true
+        })
+        .draggable({
+            listeners: {
+                move(event) {
+                    const target = event.target;
+                    const currentLeft = parseFloat(target.style.left) || 0;
+                    const currentTop = parseFloat(target.style.top) || 0;
+
+                    target.style.left = (currentLeft + event.dx) + 'px';
+                    target.style.top = (currentTop + event.dy) + 'px';
+
+                    snapToTree(target, currentLeft + event.dx, currentTop + event.dy);
+                }
+            },
+            inertia: true
+        });
+}

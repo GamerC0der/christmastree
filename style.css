@@ -14,43 +14,17 @@ body{
   max-width: 20rem;
   display: flex;
   margin: auto auto;
+  justify-content: center;
 }
 
-#star{
-  display: inline-block;
-  position: relative;
-  margin: 0 -13rem;
-  font-size: 5rem;
-  z-index: 5;
-
-}
-
-#tree{
+#tree-image{
   width: 20rem;
-  display: inline;
-  margin: 4rem 0 0 0;
-  z-index: 0;
-  -webkit-user-drag: none;
-  user-select: none;
-}
-
-#decorations{
-  display: inline-block;
-}
-
-.ornament{
-  width: 2rem;
-  height: 2rem;
-  position: absolute;
-  z-index: 10;
-  cursor: grab;
-  -webkit-user-drag: none;
-  user-select: none;
+  height: auto;
+  display: block;
+  margin: 2rem 0;
+  border-radius: 0.5rem;
+  max-height: 30rem;
   object-fit: contain;
-}
-
-.ornament:active {
-  cursor: grabbing;
 }
 
 .important-text{
@@ -103,18 +77,13 @@ body{
   height: 3rem;
   object-fit: contain;
   cursor: pointer;
-  border: 2px solid transparent;
   border-radius: 0.25rem;
-  transition: border-color 0.3s;
   background-color: #333;
   padding: 0.25rem;
   -webkit-user-drag: none;
   user-select: none;
 }
 
-.ornament-option:hover {
-  border-color: #5bc0de;
-}
 
 .ornament .interact-resize-handle {
   width: 8px;
@@ -153,4 +122,26 @@ body{
   bottom: -4px;
   right: -4px;
   cursor: se-resize;
+}
+
+.ornament {
+  position: absolute;
+  border-radius: 0.25rem;
+  z-index: 10;
+}
+
+
+
+.ornament.snapped .interact-resize-handle {
+  display: block;
+}
+
+.ornament .interact-resize-handle {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.ornament:hover .interact-resize-handle {
+  opacity: 1;
 }
