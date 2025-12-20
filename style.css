@@ -64,6 +64,61 @@ body{
   color: #1a1a1a;
 }
 
+.action-button {
+  background-color: #333;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #555;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 0.25rem;
+  top: 100%;
+  margin-top: 0.25rem;
+}
+
+.dropdown-content button {
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  border-radius: 0;
+}
+
+.dropdown-content button:hover {
+  background-color: #555;
+}
+
+.dropdown.show .dropdown-content {
+  display: block;
+}
+
 #ornament-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -85,63 +140,27 @@ body{
 }
 
 
-.ornament .interact-resize-handle {
-  width: 8px;
-  height: 8px;
-  background: #5bc0de;
-  border: 1px solid #333;
-  position: absolute;
-}
-
-.ornament .interact-resize-handle-tl,
-.ornament .interact-resize-handle-tr,
-.ornament .interact-resize-handle-bl,
-.ornament .interact-resize-handle-br {
-  border-radius: 50%;
-}
-
-.ornament .interact-resize-handle-tl {
-  top: -4px;
-  left: -4px;
-  cursor: nw-resize;
-}
-
-.ornament .interact-resize-handle-tr {
-  top: -4px;
-  right: -4px;
-  cursor: ne-resize;
-}
-
-.ornament .interact-resize-handle-bl {
-  bottom: -4px;
-  left: -4px;
-  cursor: sw-resize;
-}
-
-.ornament .interact-resize-handle-br {
-  bottom: -4px;
-  right: -4px;
-  cursor: se-resize;
-}
-
 .ornament {
   position: absolute;
   border-radius: 0.25rem;
   z-index: 10;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease;
+  min-width: 30px;
+  min-height: 30px;
+  max-width: 200px;
+  max-height: 200px;
 }
 
-
-
-.ornament.snapped .interact-resize-handle {
-  display: block;
+.ornament:hover {
+  border-color: rgba(91, 192, 222, 0.5);
 }
 
-.ornament .interact-resize-handle {
-  display: block;
-  opacity: 0;
-  transition: opacity 0.2s;
+.ornament.resizing {
+  border-color: #5bc0de;
+  box-shadow: 0 0 8px rgba(91, 192, 222, 0.3);
 }
 
-.ornament:hover .interact-resize-handle {
-  opacity: 1;
+.ornament.snapped {
+  border-color: rgba(91, 192, 222, 0.8);
 }
