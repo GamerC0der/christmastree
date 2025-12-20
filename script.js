@@ -49,7 +49,8 @@ const ornamentCategories = {
         "https://hc-cdn.hel1.your-objectstorage.com/s/v3/c8a9b423f92e7c76_image-removebg-preview__28_-removebg-preview.png",
         "https://hc-cdn.hel1.your-objectstorage.com/s/v3/f38590ace966c976b4f2922e56be6edc936e9148_HackHackClub.png",
         "https://hc-cdn.hel1.your-objectstorage.com/s/v3/412791702873de9de5297c616e38818a1cdac0d5_Horse.png",
-        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/7886d2c85adf83c0ed767d5cbf1b3b6700f173bf_flea_sticker.png"
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/7886d2c85adf83c0ed767d5cbf1b3b6700f173bf_flea_sticker.png",
+        "https://hc-cdn.hel1.your-objectstorage.com/s/v3/09e6d73b9e78908f5abbf321e7ff8a298136864b_Hcb__Dark_.png"
     ]
 };
 
